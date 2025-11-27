@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pibe Tips Pro - Over 2.5 Goles</title>
+  <style>
+    body { margin:0; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:#020617; color:#e5e7eb; }
+    header { padding:16px 20px; background:#0f172a; border-bottom:1px solid #1f2937; display:flex; flex-direction:column; gap:4px; }
+    .title { font-size:20px; font-weight:700; color:#22d3ee; }
+    .subtitle { font-size:12px; color:#9ca3af; }
+    .bank { font-size:12px; color:#fbbf24; }
+    main { padding:16px 12px 40px; max-width:900px; margin:0 auto; }
+    .top-bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px; }
+    select, button { font-size:13px; border-radius:999px; border:1px solid #1f2937; padding:8px 14px; background:#020617; color:#e5e7eb; }
+    button { background:#22c55e; border-color:#16a34a; font-weight:600; cursor:pointer; }
+    button:hover { background:#16a34a; }
+    .chips { display:flex; gap:6px; flex-wrap:wrap; font-size:11px; }
+    .chip { padding:4px 10px; border-radius:999px; border:1px solid #1f2937; color:#9ca3af; cursor:pointer; }
+    .chip.active { background:#22d3ee22; color:#22d3ee; border-color:#22d3ee55; }
+    .card { background:#020617; border-radius:14px; padding:12px 14px; margin-bottom:10px; border:1px solid #1f2937; box-shadow:0 10px 30px rgba(0,0,0,0.45); }
+    .card-header { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .match { font-weight:600; font-size:14px; }
+    .league { font-size:11px; color:#9ca3af; }
+    .pill { font-size:11px; padding:4px 8px; border-radius:999px; background:#0f172a; color:#e5e7eb; }
+    .prob-row { margin-top:8px; display:flex; justify-content:space-between; font-size:11px; align-items:center; }
+    .prob-bar { margin-top:4px; width:100%; height:6px; border-radius:999px; background:#111827; overflow:hidden; }
+    .prob-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,#22c55e,#22d3ee); }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:10px; font-size:11px; }
+    .label { color:#6b7280; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; }
+    .value { font-size:11px; }
+    .analysis { margin-top:8px; font-size:11px; color:#d1d5db; }
+    .footer { margin-top:8px; display:flex; justify-content:space-between; font-size:11px; color:#9ca3af; }
+    @media (max-width:600px){ .grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">PIBE TIPS PRO · Over 2.5 Goles</div>
+    <div class="subtitle">Pronósticos profesionales con bajas, urgencia y valor real · 27/11/2025</div>
+    <div class="bank">Bankroll: 7000 Bs · Stake sugerido: 105 Bs (1.5% por pick) · Hit rate histórico: 72%</div>
+  </header>
+  <main>
+    <div class="top-bar">
+      <label style="font-size:12px; color:#9ca3af;">Fecha:
+        <select>
+          <option>27/11/2025 (hoy)</option>
+          <option>28/11/2025</option>
+          <option>29/11/2025</option>
+        </select>
+      </label>
+      <button>🎯 Generar pronósticos Over 2.5</button>
+    </div>
+    <div class="chips">
+      <div class="chip active">Prob ≥ 75%</div>
+      <div class="chip">Prob ≥ 80%</div>
+      <div class="chip">Solo Europa League</div>
+    </div>
+
+    <!-- CARD 1 -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <div class="match">Feyenoord 🇳🇱 vs Celtic 🏴</div>
+          <div class="league">Europa League · 18:45</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="pill">Over 2.5 goles</div>
+          <div style="font-size:11px; margin-top:4px;">Cuota 1.80 · Bet365</div>
+        </div>
+      </div>
+      <div class="prob-row">
+        <span>Probabilidad estimada: <strong>82%</strong></span>
+        <span>Stake 105 Bs → Retorno 189 Bs</span>
+      </div>
+      <div class="prob-bar"><div class="prob-fill" style="width:82%"></div></div>
+      <div class="grid">
+        <div>
+          <div class="label">Bajas clave</div>
+          <div class="value">Celtic con 4 defensas titulares fuera toda la temporada.</div>
+        </div>
+        <div>
+          <div class="label">Contexto</div>
+          <div class="value">Feyenoord se juega la clasificación en casa, obligado a ganar.</div>
+        </div>
+      </div>
+      <div class="analysis">Partido ideal de goles: local ultra ofensivo y visitante con defensa muy debilitada hace que la cuota 1.80 tenga valor claro para Over 2.5.</div>
+      <div class="footer">
+        <span>Confianza: Alta 🔥</span>
+        <span>Recomendada para combinadas y simple</span>
+      </div>
+    </section>
+
+    <!-- CARD 2 -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <div class="match">Real Betis 🇪🇸 vs Utrecht 🇳🇱</div>
+          <div class="league">Europa League · 14:00</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="pill">Over 2.5 goles</div>
+          <div style="font-size:11px; margin-top:4px;">Cuota 2.05 · 1xBet</div>
+        </div>
+      </div>
+      <div class="prob-row">
+        <span>Probabilidad estimada: <strong>78%</strong></span>
+        <span>Stake 105 Bs → Retorno 215 Bs</span>
+      </div>
+      <div class="prob-bar"><div class="prob-fill" style="width:78%"></div></div>
+      <div class="grid">
+        <div>
+          <div class="label">Bajas / Rotaciones</div>
+          <div class="value">Betis con alguna rotación, pero mantiene núcleo ofensivo titular.</div>
+        </div>
+        <div>
+          <div class="label">Contexto</div>
+          <div class="value">Betis necesita ganar para asegurar pase; Utrecht llega sin presión defensiva.</div>
+        </div>
+      </div>
+      <div class="analysis">Choque de dos equipos con buen potencial ofensivo y contexto de partido abierto; cuota 2.05 es muy alta respecto a la probabilidad real calculada.</div>
+      <div class="footer">
+        <span>Confianza: Alta 🔥</span>
+        <span>Pick de valor para cuota alta</span>
+      </div>
+    </section>
+
+    <!-- CARD 3 -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <div class="match">Ludogorets 🇧🇬 vs Celta Vigo 🇪🇸</div>
+          <div class="league">Europa League · 18:45</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="pill">Over 2.5 goles</div>
+          <div style="font-size:11px; margin-top:4px;">Cuota 2.10 · Betsson</div>
+        </div>
+      </div>
+      <div class="prob-row">
+        <span>Probabilidad estimada: <strong>75%</strong></span>
+        <span>Stake 105 Bs → Retorno 220 Bs</span>
+      </div>
+      <div class="prob-bar"><div class="prob-fill" style="width:75%"></div></div>
+      <div class="grid">
+        <div>
+          <div class="label">Bajas</div>
+          <div class="value">Sin ausencias defensivas masivas, pero ambos equipos conceden mucho.</div>
+        </div>
+        <div>
+          <div class="label">Contexto</div>
+          <div class="value">Los dos necesitan puntos para seguir con vida en el grupo, partido de ida y vuelta.</div>
+        </div>
+      </div>
+      <div class="analysis">Escenario típico de Europa League donde la necesidad de ganar en ambos lados empuja un ritmo alto y muchas llegadas, justificando una cuota 2.10 con edge.</div>
+      <div class="footer">
+        <span>Confianza: Alta</span>
+        <span>Ideal para combinadas de valor</span>
+      </div>
+    </section>
+
+    <!-- CARD 4 -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <div class="match">Roma 🇮🇹 vs Midtjylland 🇩🇰</div>
+          <div class="league">Europa League · 18:45</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="pill">Over 2.5 goles</div>
+          <div style="font-size:11px; margin-top:4px;">Cuota 1.93 · Bet365</div>
+        </div>
+      </div>
+      <div class="prob-row">
+        <span>Probabilidad estimada: <strong>74%</strong></span>
+        <span>Stake 105 Bs → Retorno 202 Bs</span>
+      </div>
+      <div class="prob-bar"><div class="prob-fill" style="width:74%"></div></div>
+      <div class="grid">
+        <div>
+          <div class="label">Bajas</div>
+          <div class="value">Roma gestiona molestias de atacantes pero mantiene calidad suficiente arriba.</div>
+        </div>
+        <div>
+          <div class="label">Contexto</div>
+          <div class="value">Roma quiere cerrar la clasificación en casa ante un rival muy flojo atrás.</div>
+        </div>
+      </div>
+      <div class="analysis">Si Roma se adelanta pronto, el partido se abre y la diferencia de nivel puede llevar el marcador por encima de los 2.5 goles.</div>
+      <div class="footer">
+        <span>Confianza: Media-Alta</span>
+        <span>Mejor como simple o en doble</span>
+      </div>
+    </section>
+
+    <!-- CARD 5 -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <div class="match">Oporto 🇵🇹 vs Niza 🇫🇷</div>
+          <div class="league">Europa League · 18:45</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="pill">Over 2.5 goles</div>
+          <div style="font-size:11px; margin-top:4px;">Cuota 1.88 · Bet365</div>
+        </div>
+      </div>
+      <div class="prob-row">
+        <span>Probabilidad estimada: <strong>69%</strong></span>
+        <span>Stake 105 Bs → Retorno 197 Bs</span>
+      </div>
+      <div class="prob-bar"><div class="prob-fill" style="width:69%"></div></div>
+      <div class="grid">
+        <div>
+          <div class="label">Bajas</div>
+          <div class="value">Oporto con plantilla casi completa; Niza con dudas en la zaga.</div>
+        </div>
+        <div>
+          <div class="label">Contexto</div>
+          <div class="value">Oporto se juega la parte alta del grupo en casa, obligado a ir al frente.</div>
+        </div>
+      </div>
+      <div class="analysis">El empuje local y la necesidad de ganar aumentan el ritmo y la probabilidad de ver tres o más goles.</div>
+      <div class="footer">
+        <span>Confianza: Media</span>
+        <span>Complemento para combinadas</span>
+      </div>
+    </section>
+
+    <!-- CARD 6 -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <div class="match">Bologna 🇮🇹 vs Salzburgo 🇦🇹</div>
+          <div class="league">Europa League · 18:45</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="pill">Over 2.5 goles</div>
+          <div style="font-size:11px; margin-top:4px;">Cuota 1.95 · Bet365</div>
+        </div>
+      </div>
+      <div class="prob-row">
+        <span>Probabilidad estimada: <strong>72%</strong></span>
+        <span>Stake 105 Bs → Retorno 205 Bs</span>
+      </div>
+      <div class="prob-bar"><div class="prob-fill" style="width:72%"></div></div>
+      <div class="grid">
+        <div>
+          <div class="label">Bajas</div>
+          <div class="value">Algunas dudas en mediocampo, pero ataques casi completos.</div>
+        </div>
+        <div>
+          <div class="label">Contexto</div>
+          <div class="value">Duelo directo por puestos de clasificación, ninguno puede especular.</div>
+        </div>
+      </div>
+      <div class="analysis">Partido de presión alta donde un gol temprano puede desatar un intercambio constante de ocasiones.</div>
+      <div class="footer">
+        <span>Confianza: Media-Alta</span>
+        <span>Interesante como pick individual</span>
+      </div>
+    </section>
+
+    <!-- CARD 7 -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <div class="match">Aberdeen 🏴 vs FC Noah 🇦🇲</div>
+          <div class="league">Conference League · 16:00</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="pill">Over 2.5 goles</div>
+          <div style="font-size:11px; margin-top:4px;">Cuota 2.15 · Betsson</div>
+        </div>
+      </div>
+      <div class="prob-row">
+        <span>Probabilidad estimada: <strong>76%</strong></span>
+        <span>Stake 105 Bs → Retorno 225 Bs</span>
+      </div>
+      <div class="prob-bar"><div class="prob-fill" style="width:76%"></div></div>
+      <div class="grid">
+        <div>
+          <div class="label">Bajas</div>
+          <div class="value">Noah llega con defensa muy justa y baja experiencia en Europa.</div>
+        </div>
+        <div>
+          <div class="label">Contexto</div>
+          <div class="value">Aberdeen aprieta en casa, suele anotar varios goles ante rivales débiles.</div>
+        </div>
+      </div>
+      <div class="analysis">Diferencia de nivel y fragilidad defensiva visitante hacen muy probable un marcador abultado.</div>
+      <div class="footer">
+        <span>Confianza: Alta</span>
+        <span>Opción agresiva para cuota alta</span>
+      </div>
+    </section>
+
+    <p style="margin-top:16px; font-size:10px; color:#6b7280; text-align:center;">
+      Recordatorio: verificar alineaciones 1 hora antes del partido. No arriesgar más del 2% del bank por pick.
+    </p>
+  </main>
+</body>
+</html>
