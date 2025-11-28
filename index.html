@@ -31,279 +31,139 @@
     .value { font-size:11px; }
     .analysis { margin-top:8px; font-size:11px; color:#d1d5db; }
     .footer { margin-top:8px; display:flex; justify-content:space-between; font-size:11px; color:#9ca3af; }
+    .loading { text-align:center; padding:20px; color:#9ca3af; }
+    .error { color:#ff4757; padding:16px; }
     @media (max-width:600px){ .grid{grid-template-columns:1fr;} }
   </style>
 </head>
 <body>
   <header>
     <div class="title">PIBE TIPS PRO · Over 2.5 Goles</div>
-    <div class="subtitle">Pronósticos profesionales con bajas, urgencia y valor real · 28/11/2025</div>
+    <div class="subtitle">Pronósticos profesionales con bajas, urgencia y valor real</div>
     <div class="bank">Bankroll: 7000 Bs · Stake sugerido: 105 Bs (1.5% por pick) · Hit rate histórico: 72%</div>
   </header>
   <main>
     <div class="top-bar">
       <label style="font-size:12px; color:#9ca3af;">Fecha:
-        <select>
-          <option>27/11/2025 (hoy)</option>
-          <option>28/11/2025</option>
-          <option>29/11/2025</option>
+        <select id="dateFilter">
+          <option value="">Todas las fechas</option>
         </select>
       </label>
-      <button>🎯 Generar pronósticos Over 2.5</button>
+      <button onclick="loadData()">🎯 Generar pronósticos Over 2.5</button>
     </div>
     <div class="chips">
       <div class="chip active">Prob ≥ 75%</div>
       <div class="chip">Prob ≥ 80%</div>
       <div class="chip">Solo Europa League</div>
     </div>
-
-    <!-- CARD 1 -->
-<section class="card">
-  <div class="card-header">
-    <div>
-      <div class="match">Al Draih 🇸🇦 vs Al Arabi 🇸🇦</div>
-      <div class="league">Saudi Pro League · 18:00</div>
-    </div>
-    <div style="text-align:right;">
-      <div class="pill">Over 2.5 goles</div>
-      <div style="font-size:11px; margin-top:4px;">Cuota 1.68 · Bet365</div>
-    </div>
-  </div>
-  <div class="prob-row">
-    <span>Probabilidad estimada: <strong>78%</strong></span>
-    <span>Stake 105 Bs → Retorno 176 Bs</span>
-  </div>
-  <div class="prob-bar"><div class="prob-fill" style="width:78%"></div></div>
-  <div class="grid">
-    <div>
-      <div class="label">Bajas clave</div>
-      <div class="value">Mínimas en ambos equipos, plantillas casi completas.</div>
-    </div>
-    <div>
-      <div class="label">Contexto</div>
-      <div class="value">Ambos ataques mostrando buen nivel ofensivo, 2.67 goles promedio.</div>
-    </div>
-  </div>
-  <div class="analysis">Partido abierto con ritmo alto típico de Saudi Pro League; ambos equipos buscan ganar, lo que genera oportunidades constantes.</div>
-  <div class="footer">
-    <span>Confianza: Alta 🔥</span>
-    <span>Recomendada para combinadas y simple</span>
-  </div>
-</section>
-
-
-   <!-- CARD 2 -->
-<section class="card">
-  <div class="card-header">
-    <div>
-      <div class="match">Getafe 🇪🇸 vs Elche 🇪🇸</div>
-      <div class="league">LaLiga · 20:00</div>
-    </div>
-    <div style="text-align:right;">
-      <div class="pill">Over 2.5 goles</div>
-      <div style="font-size:11px; margin-top:4px;">Cuota 1.85 · Betway</div>
-    </div>
-  </div>
-  <div class="prob-row">
-    <span>Probabilidad estimada: <strong>72%</strong></span>
-    <span>Stake 105 Bs → Retorno 194 Bs</span>
-  </div>
-  <div class="prob-bar"><div class="prob-fill" style="width:72%"></div></div>
-  <div class="grid">
-    <div>
-      <div class="label">Bajas / Rotaciones</div>
-      <div class="value">Getafe sin bajas defensivas críticas, plantilla disponible.</div>
-    </div>
-    <div>
-      <div class="label">Contexto</div>
-      <div class="value">Getafe concede mucho en casa; Elche con moral tras empate vs Real Madrid.</div>
-    </div>
-  </div>
-  <div class="analysis">Choque LaLiga típico donde Getafe es vulnerable atrás; Elche visitante confiado tras resultado respetable vs Madrid.</div>
-  <div class="footer">
-    <span>Confianza: Alta</span>
-    <span>Pick de valor para cuota media</span>
-  </div>
-</section>
-
-   <!-- CARD 3 -->
-<section class="card">
-  <div class="card-header">
-    <div>
-      <div class="match">Vitória Guimarães 🇵🇹 vs AVS 🇵🇹</div>
-      <div class="league">Primeira Liga · 20:15</div>
-    </div>
-    <div style="text-align:right;">
-      <div class="pill">Over 2.5 goles</div>
-      <div style="font-size:11px; margin-top:4px;">Cuota 2.13 · Bet365</div>
-    </div>
-  </div>
-  <div class="prob-row">
-    <span>Probabilidad estimada: <strong>76%</strong></span>
-    <span>Stake 105 Bs → Retorno 224 Bs</span>
-  </div>
-  <div class="prob-bar"><div class="prob-fill" style="width:76%"></div></div>
-  <div class="grid">
-    <div>
-      <div class="label">Bajas</div>
-      <div class="value">Sin información crítica, ambos con plantillas casi completas.</div>
-    </div>
-    <div>
-      <div class="label">Contexto</div>
-      <div class="value">Vitória defensivo débil; AVS con buenos atacantes.</div>
-    </div>
-  </div>
-  <div class="analysis">Partido portugués abierto donde Vitória es débil defensivamente; cuota 2.13 es generosa considerando el nivel de ambos equipos.</div>
-  <div class="footer">
-    <span>Confianza: Alta</span>
-    <span>Ideal para combinadas de valor</span>
-  </div>
-</section>
-
-
-  <!-- CARD 4 -->
-<section class="card">
-  <div class="card-header">
-    <div>
-      <div class="match">Radomiak Radom 🇵🇱 vs Górnik Zabrze 🇵🇱</div>
-      <div class="league">Ekstraklasa · 19:30</div>
-    </div>
-    <div style="text-align:right;">
-      <div class="pill">Over 2.5 goles</div>
-      <div style="font-size:11px; margin-top:4px;">Cuota 1.88 · Bet365</div>
-    </div>
-  </div>
-  <div class="prob-row">
-    <span>Probabilidad estimada: <strong>74%</strong></span>
-    <span>Stake 105 Bs → Retorno 197 Bs</span>
-  </div>
-  <div class="prob-bar"><div class="prob-fill" style="width:74%"></div></div>
-  <div class="grid">
-    <div>
-      <div class="label">Bajas</div>
-      <div class="value">Ninguna reportada, ambos con plantillas disponibles.</div>
-    </div>
-    <div>
-      <div class="label">Contexto</div>
-      <div class="value">Duelo divisional directo, ambos equipos ofensivos por puntos.</div>
-    </div>
-  </div>
-  <div class="analysis">Ekstraklasa: duelo competitivo donde la necesidad mutua de ganar garantiza un ritmo alto y muchas ocasiones.</div>
-  <div class="footer">
-    <span>Confianza: Media-Alta</span>
-    <span>Mejor como simple o en doble</span>
-  </div>
-</section>
-
-
-  <!-- CARD 5 -->
-<section class="card">
-  <div class="card-header">
-    <div>
-      <div class="match">Sporting Gijón 🇪🇸 vs Andorra CF 🇪🇸</div>
-      <div class="league">Segunda División · 19:30</div>
-    </div>
-    <div style="text-align:right;">
-      <div class="pill">Over 2.5 goles</div>
-      <div style="font-size:11px; margin-top:4px;">Cuota 2.11 · Betsson</div>
-    </div>
-  </div>
-  <div class="prob-row">
-    <span>Probabilidad estimada: <strong>71%</strong></span>
-    <span>Stake 105 Bs → Retorno 222 Bs</span>
-  </div>
-  <div class="prob-bar"><div class="prob-fill" style="width:71%"></div></div>
-  <div class="grid">
-    <div>
-      <div class="label">Bajas</div>
-      <div class="value">Ninguna crítica reportada.</div>
-    </div>
-    <div>
-      <div class="label">Contexto</div>
-      <div class="value">Sporting presionado por clasificación, Andorra defensa débil.</div>
-    </div>
-  </div>
-  <div class="analysis">Segunda División: diferencia de clase clara; Sporting arriesga alto, Andorra sin capacidad defensiva suficiente.</div>
-  <div class="footer">
-    <span>Confianza: Media-Alta</span>
-    <span>Interesante como pick individual</span>
-  </div>
-</section>
-
-
-   <!-- CARD 6 -->
-<section class="card">
-  <div class="card-header">
-    <div>
-      <div class="match">Vasco da Gama 🇧🇷 vs Internacional RS 🇧🇷</div>
-      <div class="league">Brasileirão · 22:30</div>
-    </div>
-    <div style="text-align:right;">
-      <div class="pill">Over 2.5 goles</div>
-      <div style="font-size:11px; margin-top:4px;">Cuota 2.18 · Bet365</div>
-    </div>
-  </div>
-  <div class="prob-row">
-    <span>Probabilidad estimada: <strong>73%</strong></span>
-    <span>Stake 105 Bs → Retorno 229 Bs</span>
-  </div>
-  <div class="prob-bar"><div class="prob-fill" style="width:73%"></div></div>
-  <div class="grid">
-    <div>
-      <div class="label">Bajas</div>
-      <div class="value">Sin bajas masivas, ambos con ataques disponibles.</div>
-    </div>
-    <div>
-      <div class="label">Contexto</div>
-      <div class="value">Clásico brasileño con ritmo alto garantizado, ambos atacan.</div>
-    </div>
-  </div>
-  <div class="analysis">Clásico Brasileirão: partidos típicamente abiertos, ritmo frenético, ambos equipos con buen potencial ofensivo.</div>
-  <div class="footer">
-    <span>Confianza: Media-Alta</span>
-    <span>Opción explosiva para cuota alta</span>
-  </div>
-</section>
-
-
-    <!-- CARD 7 -->
-<section class="card">
-  <div class="card-header">
-    <div>
-      <div class="match">Cobresal 🇨🇱 vs Colo Colo 🇨🇱</div>
-      <div class="league">Primera División Chile · 23:00</div>
-    </div>
-    <div style="text-align:right;">
-      <div class="pill">Over 2.5 goles</div>
-      <div style="font-size:11px; margin-top:4px;">Cuota 1.71 · Bet365</div>
-    </div>
-  </div>
-  <div class="prob-row">
-    <span>Probabilidad estimada: <strong>69%</strong></span>
-    <span>Stake 105 Bs → Retorno 179 Bs</span>
-  </div>
-  <div class="prob-bar"><div class="prob-fill" style="width:69%"></div></div>
-  <div class="grid">
-    <div>
-      <div class="label">Bajas</div>
-      <div class="value">Colo Colo sin bajas relevantes, plantilla disponible.</div>
-    </div>
-    <div>
-      <div class="label">Contexto</div>
-      <div class="value">Colo Colo motivado, Cobresal flojo defensivamente.</div>
-    </div>
-  </div>
-  <div class="analysis">Primera División Chile: diferencia de clase entre equipos; Colo Colo superior, Cobresal defensivo débil.</div>
-  <div class="footer">
-    <span>Confianza: Media</span>
-    <span>Complemento para combinadas</span>
-  </div>
-</section>
-
-
-    <p style="margin-top:16px; font-size:10px; color:#6b7280; text-align:center;">
-      Recordatorio: verificar alineaciones 1 hora antes del partido. No arriesgar más del 2% del bank por pick.
-    </p>
+    <div id="cardsContainer" class="loading">Cargando pronósticos...</div>
   </main>
+
+  <script>
+    const SHEET_ID = '1MBb556CHr5whndg-f8EHp2eUtoJnoDJKnDdW_nWhw0c';
+    const API_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/query?key=AIzaSyDaRkWdGEf9oBLariATnysJtBJNCLXYfIE`;
+    
+    let allData = [];
+
+    async function loadData() {
+      try {
+        const response = await fetch(API_URL + `&tq=SELECT *`);
+        const text = await response.text();
+        const json = JSON.parse(text.substring(6));
+        
+        if (json.rows.length === 0) {
+          document.getElementById('cardsContainer').innerHTML = '<div class="error">No hay datos disponibles</div>';
+          return;
+        }
+
+        allData = json.rows.map(row => ({
+          fecha: row.c[0]?.v || '',
+          partido: row.c[1]?.v || '',
+          liga: row.c[2]?.v || '',
+          hora: row.c[3]?.v || '',
+          cuota: row.c[4]?.v || '',
+          casa: row.c[5]?.v || '',
+          probabilidad: row.c[6]?.v || '',
+          stake: row.c[7]?.v || '',
+          retorno: row.c[8]?.v || '',
+          analisis: row.c[9]?.v || '',
+          bajas: row.c[10]?.v || '',
+          contexto: row.c[11]?.v || ''
+        })).filter(row => row.fecha && row.partido && !isNaN(row.probabilidad));
+
+        // Llenar selector de fechas
+        const uniqueDates = [...new Set(allData.map(d => d.fecha))].sort().reverse();
+        const dateFilter = document.getElementById('dateFilter');
+        dateFilter.innerHTML = '<option value="">Todas las fechas</option>';
+        uniqueDates.forEach(date => {
+          const option = document.createElement('option');
+          option.value = date;
+          option.textContent = date;
+          dateFilter.appendChild(option);
+        });
+
+        renderCards();
+      } catch (error) {
+        document.getElementById('cardsContainer').innerHTML = '<div class="error">Error al cargar datos: ' + error.message + '</div>';
+      }
+    }
+
+    function renderCards() {
+      const selectedDate = document.getElementById('dateFilter')?.value || '';
+      const filteredData = selectedDate ? allData.filter(d => d.fecha === selectedDate) : allData;
+
+      if (filteredData.length === 0) {
+        document.getElementById('cardsContainer').innerHTML = '<div class="loading">No hay pronósticos para esta fecha</div>';
+        return;
+      }
+
+      let html = '';
+      filteredData.forEach((pred, index) => {
+        const prob = parseInt(pred.probabilidad) || 0;
+        const emojis = pred.liga.includes('Europa') ? '🇪🇺' : pred.liga.includes('LaLiga') ? '🇪🇸' : pred.liga.includes('Liga') ? '🏆' : '⚽';
+        
+        html += `
+          <section class="card">
+            <div class="card-header">
+              <div>
+                <div class="match">${pred.partido} ${emojis}</div>
+                <div class="league">${pred.liga} · ${pred.hora}</div>
+              </div>
+              <div style="text-align:right;">
+                <div class="pill">Over 2.5 goles</div>
+                <div style="font-size:11px; margin-top:4px;">Cuota ${pred.cuota} · ${pred.casa}</div>
+              </div>
+            </div>
+            <div class="prob-row">
+              <span>Probabilidad estimada: <strong>${prob}%</strong></span>
+              <span>Stake ${pred.stake} Bs → Retorno ${pred.retorno} Bs</span>
+            </div>
+            <div class="prob-bar"><div class="prob-fill" style="width:${prob}%"></div></div>
+            <div class="grid">
+              <div>
+                <div class="label">Bajas clave</div>
+                <div class="value">${pred.bajas || 'Sin información'}</div>
+              </div>
+              <div>
+                <div class="label">Contexto</div>
+                <div class="value">${pred.contexto || 'Sin información'}</div>
+              </div>
+            </div>
+            <div class="analysis">${pred.analisis || 'Sin análisis disponible'}</div>
+            <div class="footer">
+              <span>Confianza: ${prob >= 80 ? 'Muy Alta 🔥' : prob >= 75 ? 'Alta 🔥' : 'Media'}</span>
+              <span>${index + 1} de ${filteredData.length}</span>
+            </div>
+          </section>
+        `;
+      });
+
+      document.getElementById('cardsContainer').innerHTML = html;
+    }
+
+    document.getElementById('dateFilter').addEventListener('change', renderCards);
+    loadData();
+  </script>
 </body>
 </html>
+
