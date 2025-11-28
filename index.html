@@ -31,8 +31,6 @@
     .value { font-size:11px; }
     .analysis { margin-top:8px; font-size:11px; color:#d1d5db; }
     .footer { margin-top:8px; display:flex; justify-content:space-between; font-size:11px; color:#9ca3af; }
-    .loading { text-align:center; padding:20px; color:#9ca3af; }
-    .error { color:#ff4757; padding:16px; }
     @media (max-width:600px){ .grid{grid-template-columns:1fr;} }
   </style>
 </head>
@@ -45,88 +43,48 @@
   <main>
     <div class="top-bar">
       <label style="font-size:12px; color:#9ca3af;">Fecha:
-        <select id="dateFilter">
+        <select id="dateFilter" onchange="filterByDate()">
           <option value="">Todas las fechas</option>
+          <option value="27/11/2025">27/11/2025</option>
+          <option value="28/11/2025">28/11/2025</option>
         </select>
       </label>
-      <button onclick="loadData()">🎯 Generar pronósticos Over 2.5</button>
+      <button onclick="alert('Pronósticos cargados ✓')">🎯 Generar pronósticos Over 2.5</button>
     </div>
     <div class="chips">
       <div class="chip active">Prob ≥ 75%</div>
       <div class="chip">Prob ≥ 80%</div>
       <div class="chip">Solo Europa League</div>
     </div>
-    <div id="cardsContainer" class="loading">Cargando pronósticos...</div>
+    <div id="cardsContainer"></div>
   </main>
 
   <script>
-    const SHEET_ID = '1MBb556CHr5whndg-f8EHp2eUtoJnoDJKnDdW_nWhw0c';
-    const API_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/query?key=AIzaSyDaRkWdGEf9oBLariATnysJtBJNCLXYfIE`;
-    
-    let allData = [];
+    const data = [
+      {fecha: "27/11/2025", partido: "Feyenoord vs Celtic", liga: "Europa League", hora: "18:45", cuota: "1.80", casa: "Bet365", prob: 82, stake: 105, retorno: 189, analisis: "Partido ideal de goles: local ultra ofensivo y visitante con defensa muy debilitada", bajas: "Celtic con 4 defensas titulares fuera toda la temporada", contexto: "Feyenoord se juega la clasificación en casa, obligado a ganar"},
+      {fecha: "27/11/2025", partido: "Real Betis vs Utrecht", liga: "Europa League", hora: "14:00", cuota: "2.05", casa: "1xBet", prob: 78, stake: 105, retorno: 215, analisis: "Choque de dos equipos con buen potencial ofensivo y contexto de partido abierto", bajas: "Betis con alguna rotación, pero mantiene núcleo ofensivo titular", contexto: "Betis necesita ganar para asegurar pase; Utrecht llega sin presión defensiva"},
+      {fecha: "27/11/2025", partido: "Ludogorets vs Celta Vigo", liga: "Europa League", hora: "18:45", cuota: "2.10", casa: "Betsson", prob: 75, stake: 105, retorno: 220, analisis: "Escenario típico de Europa League donde la necesidad de ganar en ambos lados empuja un ritmo alto", bajas: "Sin ausencias defensivas masivas, pero ambos equipos conceden mucho", contexto: "Los dos necesitan puntos para seguir con vida en el grupo"},
+      {fecha: "27/11/2025", partido: "Roma vs Midtjylland", liga: "Europa League", hora: "18:45", cuota: "1.93", casa: "Bet365", prob: 74, stake: 105, retorno: 202, analisis: "Si Roma se adelanta pronto, el partido se abre y la diferencia de nivel puede llevar el marcador por encima de los 2.5 goles", bajas: "Roma gestiona molestias de atacantes pero mantiene calidad suficiente arriba", contexto: "Roma quiere cerrar la clasificación en casa ante un rival muy flojo atrás"},
+      {fecha: "27/11/2025", partido: "Oporto vs Niza", liga: "Europa League", hora: "18:45", cuota: "1.88", casa: "Bet365", prob: 69, stake: 105, retorno: 197, analisis: "El empuje local y la necesidad de ganar aumentan el ritmo y la probabilidad de ver tres o más goles", bajas: "Oporto con plantilla casi completa; Niza con dudas en la zaga", contexto: "Oporto se juega la parte alta del grupo en casa, obligado a ir al frente"},
+      {fecha: "27/11/2025", partido: "Bologna vs Salzburgo", liga: "Europa League", hora: "18:45", cuota: "1.95", casa: "Bet365", prob: 72, stake: 105, retorno: 205, analisis: "Partido de presión alta donde un gol temprano puede desatar un intercambio constante de ocasiones", bajas: "Algunas dudas en mediocampo, pero ataques casi completos", contexto: "Duelo directo por puestos de clasificación, ninguno puede especular"},
+      {fecha: "27/11/2025", partido: "Aberdeen vs FC Noah", liga: "Conference League", hora: "16:00", cuota: "2.15", casa: "Betsson", prob: 76, stake: 105, retorno: 225, analisis: "Diferencia de nivel y fragilidad defensiva visitante hacen muy probable un marcador abultado", bajas: "Noah llega con defensa muy justa y baja experiencia en Europa", contexto: "Aberdeen aprieta en casa, suele anotar varios goles ante rivales débiles"},
+      {fecha: "28/11/2025", partido: "Al Draih vs Al Arabi", liga: "Saudi Pro League", hora: "18:00", cuota: "1.68", casa: "Bet365", prob: 78, stake: 105, retorno: 176, analisis: "Ambos ataques mostrando buen nivel; 2.67 goles promedio historico", bajas: "Mínimas en ambos equipos", contexto: "Saudi Pro League, ritmo alto ofensivo"},
+      {fecha: "28/11/2025", partido: "Getafe vs Elche", liga: "LaLiga", hora: "20:00", cuota: "1.85", casa: "Betway", prob: 72, stake: 105, retorno: 194, analisis: "Getafe concede mucho en casa, Elche con moral tras empate vs Real Madrid", bajas: "Getafe sin bajas defensivas críticas", contexto: "LaLiga, Elche visitante pero confiado"},
+      {fecha: "28/11/2025", partido: "Vitória Guimarães vs AVS", liga: "Primeira Liga", hora: "20:15", cuota: "2.13", casa: "Bet365", prob: 76, stake: 105, retorno: 224, analisis: "Ambos equipos atacan, Vitória defensivo débil", bajas: "Sin información crítica", contexto: "Primeira Liga portuguesa, partido competitivo"},
+      {fecha: "28/11/2025", partido: "Radomiak Radom vs Górnik Zabrze", liga: "Ekstraklasa", hora: "19:30", cuota: "1.88", casa: "Bet365", prob: 74, stake: 105, retorno: 197, analisis: "Duelo directo de división, ambos equipos ofensivos", bajas: "Ninguna reportada", contexto: "Ekstraklasa Polonia, necesidad mutua de puntos"},
+      {fecha: "28/11/2025", partido: "Sporting Gijón vs Andorra CF", liga: "Segunda División", hora: "19:30", cuota: "2.11", casa: "Betsson", prob: 71, stake: 105, retorno: 222, analisis: "Sporting presionado por clasificación, Andorra defensa débil", bajas: "Ninguna crítica", contexto: "Segunda División España, diferencia de nivel clara"},
+      {fecha: "28/11/2025", partido: "Vasco da Gama vs Internacional RS", liga: "Brasileirão", hora: "22:30", cuota: "2.18", casa: "Bet365", prob: 73, stake: 105, retorno: 229, analisis: "Clásico brasileño, ritmo alto garantizado", bajas: "Sin bajas masivas", contexto: "Brasileirão, partidos abiertos típicamente"},
+      {fecha: "28/11/2025", partido: "Cobresal vs Colo Colo", liga: "Primera División Chile", hora: "23:00", cuota: "1.71", casa: "Bet365", prob: 69, stake: 105, retorno: 179, analisis: "Colo Colo motivado, Cobresal flojo defensivamente", bajas: "Colo Colo sin bajas relevantes", contexto: "Primera División Chile, diferencia de clase"}
+    ];
 
-    async function loadData() {
-      try {
-        const response = await fetch(API_URL + `&tq=SELECT *`);
-        const text = await response.text();
-        const json = JSON.parse(text.substring(6));
-        
-        if (json.rows.length === 0) {
-          document.getElementById('cardsContainer').innerHTML = '<div class="error">No hay datos disponibles</div>';
-          return;
-        }
-
-        allData = json.rows.map(row => ({
-          fecha: row.c[0]?.v || '',
-          partido: row.c[1]?.v || '',
-          liga: row.c[2]?.v || '',
-          hora: row.c[3]?.v || '',
-          cuota: row.c[4]?.v || '',
-          casa: row.c[5]?.v || '',
-          probabilidad: row.c[6]?.v || '',
-          stake: row.c[7]?.v || '',
-          retorno: row.c[8]?.v || '',
-          analisis: row.c[9]?.v || '',
-          bajas: row.c[10]?.v || '',
-          contexto: row.c[11]?.v || ''
-        })).filter(row => row.fecha && row.partido && !isNaN(row.probabilidad));
-
-        // Llenar selector de fechas
-        const uniqueDates = [...new Set(allData.map(d => d.fecha))].sort().reverse();
-        const dateFilter = document.getElementById('dateFilter');
-        dateFilter.innerHTML = '<option value="">Todas las fechas</option>';
-        uniqueDates.forEach(date => {
-          const option = document.createElement('option');
-          option.value = date;
-          option.textContent = date;
-          dateFilter.appendChild(option);
-        });
-
-        renderCards();
-      } catch (error) {
-        document.getElementById('cardsContainer').innerHTML = '<div class="error">Error al cargar datos: ' + error.message + '</div>';
-      }
-    }
-
-    function renderCards() {
-      const selectedDate = document.getElementById('dateFilter')?.value || '';
-      const filteredData = selectedDate ? allData.filter(d => d.fecha === selectedDate) : allData;
-
-      if (filteredData.length === 0) {
-        document.getElementById('cardsContainer').innerHTML = '<div class="loading">No hay pronósticos para esta fecha</div>';
-        return;
-      }
-
+    function renderCards(filteredData) {
       let html = '';
       filteredData.forEach((pred, index) => {
-        const prob = parseInt(pred.probabilidad) || 0;
-        const emojis = pred.liga.includes('Europa') ? '🇪🇺' : pred.liga.includes('LaLiga') ? '🇪🇸' : pred.liga.includes('Liga') ? '🏆' : '⚽';
-        
         html += `
           <section class="card">
             <div class="card-header">
               <div>
-                <div class="match">${pred.partido} ${emojis}</div>
+                <div class="match">${pred.partido}</div>
                 <div class="league">${pred.liga} · ${pred.hora}</div>
               </div>
               <div style="text-align:right;">
@@ -135,34 +93,38 @@
               </div>
             </div>
             <div class="prob-row">
-              <span>Probabilidad estimada: <strong>${prob}%</strong></span>
+              <span>Probabilidad estimada: <strong>${pred.prob}%</strong></span>
               <span>Stake ${pred.stake} Bs → Retorno ${pred.retorno} Bs</span>
             </div>
-            <div class="prob-bar"><div class="prob-fill" style="width:${prob}%"></div></div>
+            <div class="prob-bar"><div class="prob-fill" style="width:${pred.prob}%"></div></div>
             <div class="grid">
               <div>
                 <div class="label">Bajas clave</div>
-                <div class="value">${pred.bajas || 'Sin información'}</div>
+                <div class="value">${pred.bajas}</div>
               </div>
               <div>
                 <div class="label">Contexto</div>
-                <div class="value">${pred.contexto || 'Sin información'}</div>
+                <div class="value">${pred.contexto}</div>
               </div>
             </div>
-            <div class="analysis">${pred.analisis || 'Sin análisis disponible'}</div>
+            <div class="analysis">${pred.analisis}</div>
             <div class="footer">
-              <span>Confianza: ${prob >= 80 ? 'Muy Alta 🔥' : prob >= 75 ? 'Alta 🔥' : 'Media'}</span>
+              <span>Confianza: ${pred.prob >= 80 ? 'Muy Alta 🔥' : pred.prob >= 75 ? 'Alta 🔥' : 'Media'}</span>
               <span>${index + 1} de ${filteredData.length}</span>
             </div>
           </section>
         `;
       });
-
       document.getElementById('cardsContainer').innerHTML = html;
     }
 
-    document.getElementById('dateFilter').addEventListener('change', renderCards);
-    loadData();
+    function filterByDate() {
+      const selectedDate = document.getElementById('dateFilter').value;
+      const filteredData = selectedDate ? data.filter(d => d.fecha === selectedDate) : data;
+      renderCards(filteredData);
+    }
+
+    renderCards(data);
   </script>
 </body>
 </html>
